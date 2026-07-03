@@ -311,30 +311,18 @@ if (savedLanguage && ["pt", "en", "fr"].includes(savedLanguage)) {
 }
 
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
-document.querySelectorAll(".nav-links a").forEach((link) => {
+document.querySelectorAll(".navbar .nav-link").forEach((link) => {
   if (link.getAttribute("href") === currentPage) {
     link.setAttribute("aria-current", "page");
+    link.classList.add("active");
   }
 });
 
-// Mobile nav toggle
-const navToggle = document.querySelector(".nav-toggle");
-const navLinks = document.querySelector(".nav-links");
-if (navToggle) {
-  navToggle.setAttribute("aria-expanded", "false");
-  navToggle.addEventListener("click", () => {
-    const isOpen = document.body.classList.toggle("nav-open");
-    document.querySelector(".site-header").classList.toggle("is-open", isOpen);
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.textContent = isOpen ? "×" : "☰";
+document.querySelectorAll(".navbar-collapse .nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    const nav = document.querySelector(".navbar-collapse.show");
+    if (nav && window.bootstrap) {
+      window.bootstrap.Collapse.getOrCreateInstance(nav).hide();
+    }
   });
-
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      document.body.classList.remove("nav-open");
-      document.querySelector(".site-header").classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.textContent = "☰";
-    });
-  });
-}
+});
