@@ -71,6 +71,8 @@ h3,
   color: rgba(255, 255, 255, 0.82);
   font-weight: 700;
   font-size: 0.94rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .navbar .nav-link:hover,
