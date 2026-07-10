@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Christ Embassy Moçambique | Dando Sentido à Sua Vida</title>
-  <meta name="description" content="Christ Embassy Moçambique, uma comunidade de fé para Moçambique e os países de língua portuguesa.">
+  <title>Christ Embassy Moçambique | Uma igreja, uma família</title>
+  <meta name="description" content="Christ Embassy Moçambique, uma comunidade de fé viva para Moçambique e para a comunidade lusófona.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="icon" type="image/png" href="assets/web/logo-ce.png">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20260709-capulana-edge">
 </head>
 <body>
   <header class="site-header sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-xl navbar-dark">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
           <img class="brand-logo" src="assets/web/logo-ce.png" alt="Embaixada de Cristo Moçambique">
@@ -24,20 +24,22 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="siteNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-            <li class="nav-item"><a class="nav-link" href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li>
-            <li class="nav-item"><a class="nav-link" href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li>
+          <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-3">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav.home">Início</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.about">Sobre Nós</a>
+              <ul class="dropdown-menu" aria-labelledby="aboutMenu">
+                <li><a class="dropdown-item" href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li>
+                <li><a class="dropdown-item" href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li>
+                <li><a class="dropdown-item" href="igrejas.html" data-i18n="nav.churches">Igrejas</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a class="nav-link" href="culto.html" data-i18n="nav.online">Culto Online</a></li>
             <li class="nav-item"><a class="nav-link" href="ofertas.html" data-i18n="nav.give">Ofertas</a></li>
             <li class="nav-item"><a class="nav-link" href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
-            <li class="nav-item ms-lg-2 my-3 my-lg-0">
-              <div class="lang-switch" role="group" aria-label="Idioma">
-                <button data-lang="pt" class="active">PT</button>
-                <button data-lang="en">EN</button>
-                <button data-lang="fr">FR</button>
-              </div>
-            </li>
-            <li class="nav-item"><div class="social-links social-links-header" aria-label="Redes sociais"><a href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a></div></li><li class="nav-item"><a class="btn btn-ce-outline" href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal">Portal</a></li>
+            <li class="nav-item ms-xl-2 my-3 my-xl-0"><div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Idioma"><button data-lang="pt" class="active">PT</button><button data-lang="en">EN</button><button data-lang="fr">FR</button></div></li>
+            <li class="nav-item"><div class="social-links social-links-header" aria-label="Redes sociais"><a href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a></div></li>
+            <li class="nav-item"><a class="btn btn-ce-outline" href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal">Portal</a></li>
           </ul>
         </div>
       </div>
@@ -53,32 +55,27 @@
       </div>
       <div class="container py-5">
         <div class="row align-items-center g-5">
-          <div class="col-lg-7">
-            <span class="eyebrow" data-i18n="hero.eyebrow">Não importa quem você é... Bem-vindo a Casa</span>
-            <h1 class="mt-3 mb-4" data-i18n="hero.title">Dando <em>sentido</em> à sua vida, em Moçambique e além</h1>
-            <p class="lead mb-4 col-xl-10" data-i18n="hero.lead">Uma igreja, uma visão, um propósito, vivido em português, para Moçambique e toda a comunidade lusófona. Junte-se a nós, presencialmente ou online.</p>
+          <div class="col-xl-7">
+            <span class="eyebrow" data-i18n="hero.eyebrow">Bem-vindo à Christ Embassy Moçambique</span>
+            <h1 class="hero-title mt-3 mb-4" data-i18n="hero.title">Uma igreja, uma família, uma visão para transformar vidas.</h1>
+            <p class="lead mb-4" data-i18n="hero.lead">Junte-se à Christ Embassy Moçambique presencialmente ou online. Cresça na Palavra, descubra o seu propósito e faça parte de uma comunidade de fé viva.</p>
             <div class="d-flex flex-column flex-sm-row gap-3">
-              <a class="btn btn-ce-gold btn-lg" href="culto.html" data-i18n="hero.cta1">Assistir ao Culto Online</a>
-              <a class="btn btn-ce-outline btn-lg" href="sobre.html" data-i18n="hero.cta2">Sou Novo Aqui</a>
+              <a class="btn btn-ce-gold btn-lg" href="#novo" data-i18n="hero.cta.new">Sou Novo Aqui</a>
+              <a class="btn btn-ce-light btn-lg" href="culto.html" data-i18n="hero.cta.watch">Assistir Culto Online</a>
+              <a class="btn btn-ce-outline btn-lg" href="ofertas.html" data-i18n="hero.cta.give">Fazer Oferta</a>
             </div>
           </div>
-          <div class="col-lg-5">
-            <div class="hero-card rounded-4 p-4 p-md-5">
-              <h2 class="h4 mb-4 text-ce-gold" data-i18n="hero.services">Horários de Culto</h2>
-              <div class="service-row">
-                <span data-i18n="hero.day1">Domingo — 1º Culto</span>
-                <strong>07:45</strong>
+          <div class="col-xl-5">
+            <aside class="hero-card rounded-4 p-4 p-md-5">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <span class="icon-mark gold-icon"><i class="bi bi-calendar2-week"></i></span>
+                <h2 class="h4 mb-0 text-ce-gold" data-i18n="hero.services">Horários de Culto</h2>
               </div>
-              <div class="service-row">
-                <span data-i18n="hero.day2">Domingo — 2º Culto</span>
-                <strong>09:30</strong>
-              </div>
-              <div class="service-row">
-                <span data-i18n="hero.day3">Meio de Semana — Oração e Estudo</span>
-                <strong data-i18n="hero.day3.time">A confirmar</strong>
-              </div>
-              <p class="small mb-0 mt-4 opacity-75" data-i18n="hero.times.note">Horários sujeitos a confirmação — siga-nos no Facebook para atualizações.</p>
-            </div>
+              <div class="service-row"><span data-i18n="hero.day1">Domingo — 1º Culto</span><strong>07:45</strong></div>
+              <div class="service-row"><span data-i18n="hero.day2">Domingo — 2º Culto</span><strong>09:30</strong></div>
+              <div class="service-row"><span data-i18n="hero.online">Culto Online disponível</span><strong><i class="bi bi-broadcast"></i></strong></div>
+              <p class="small mb-0 mt-4 opacity-75" data-i18n="hero.note">Venha como está. Há um lugar preparado para si.</p>
+            </aside>
           </div>
         </div>
       </div>
@@ -86,84 +83,118 @@
 
     <div class="capulana-divider"></div>
 
-    <section class="section-padding">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-8">
-            <span class="eyebrow" data-i18n="vmp.eyebrow">A Nossa Base</span>
-            <h2 class="display-6 mt-2 mb-3" data-i18n="vmp.title">Visão, Missão e Propósito</h2>
-            <p class="lead text-ce-muted" data-i18n="vmp.lead">Partilhamos a mesma visão de todas as igrejas Christ Embassy no mundo, vivida com o coração, a língua e a cultura de Moçambique.</p>
+    <section id="novo" class="section-padding visitor-section">
+      <div class="container position-relative">
+        <div class="row align-items-end mb-5 g-4">
+          <div class="col-lg-7">
+            <span class="eyebrow" data-i18n="visitor.eyebrow">Primeira vez</span>
+            <h2 class="display-5 mt-2 mb-3" data-i18n="visitor.title">Novo na Christ Embassy?</h2>
+            <p class="lead text-ce-muted mb-0" data-i18n="visitor.lead">Queremos recebê-lo com alegria, conhecer a sua história e ajudá-lo a dar os próximos passos na fé.</p>
+          </div>
+          <div class="col-lg-5 text-lg-end">
+            <a class="btn btn-ce-dark" href="#primeira-vez-form" data-i18n="visitor.button">Registar como Primeira Vez</a>
           </div>
         </div>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <article class="card feature-card h-100 bg-ce-dark text-white">
-              <div class="card-body p-4">
-                <span class="eyebrow">Visão</span>
-                <h3 class="h4 mt-3" data-i18n="vmp.v.title">Levar a presença de Deus às nações</h3>
-                <p class="mb-0 opacity-75" data-i18n="vmp.v.text">Levar a presença divina de Deus às nações e aos povos do mundo; e demonstrar o caráter do Espírito.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-md-4">
-            <article class="card feature-card h-100 bg-ce-dark text-white">
-              <div class="card-body p-4">
-                <span class="eyebrow">Missão</span>
-                <h3 class="h4 mt-3" data-i18n="vmp.m.title">Levantar uma geração de herdeiros</h3>
-                <p class="mb-0 opacity-75" data-i18n="vmp.m.text">Levantar gerações de homens e mulheres que receberão a sua herança para concretizar o sonho de Deus.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-md-4">
-            <article class="card feature-card h-100 bg-ce-dark text-white">
-              <div class="card-body p-4">
-                <span class="eyebrow">Propósito</span>
-                <h3 class="h4 mt-3" data-i18n="vmp.p.title">Conduzir à herança em Cristo</h3>
-                <p class="mb-0 opacity-75" data-i18n="vmp.p.text">Para trazer homens e mulheres à sua herança em Cristo.</p>
-              </div>
-            </article>
-          </div>
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 col-xl-3"><article class="journey-card h-100 p-4"><span class="icon-mark gold-icon"><i class="bi bi-door-open"></i></span><h3 class="h5 mt-4" data-i18n="visitor.visit.title">Visite-nos</h3><p class="text-ce-muted mb-0" data-i18n="visitor.visit.text">Participe num dos nossos cultos presenciais em Maputo ou numa igreja perto de si.</p></article></div>
+          <div class="col-md-6 col-xl-3"><article class="journey-card h-100 p-4"><span class="icon-mark"><i class="bi bi-person-vcard"></i></span><h3 class="h5 mt-4" data-i18n="visitor.register.title">Registe a sua visita</h3><p class="text-ce-muted mb-0" data-i18n="visitor.register.text">Deixe os seus contactos para que a nossa equipa possa acompanhá-lo com cuidado.</p></article></div>
+          <div class="col-md-6 col-xl-3"><article class="journey-card h-100 p-4"><span class="icon-mark"><i class="bi bi-chat-heart"></i></span><h3 class="h5 mt-4" data-i18n="visitor.follow.title">Receba acompanhamento</h3><p class="text-ce-muted mb-0" data-i18n="visitor.follow.text">Um conselheiro ou líder irá entrar em contacto e caminhar consigo nos primeiros passos.</p></article></div>
+          <div class="col-md-6 col-xl-3"><article class="journey-card h-100 p-4"><span class="icon-mark gold-icon"><i class="bi bi-mortarboard"></i></span><h3 class="h5 mt-4" data-i18n="visitor.school.title">Comece a Escola de Fundação</h3><p class="text-ce-muted mb-0" data-i18n="visitor.school.text">Aprenda os fundamentos da Palavra e fortaleça a sua vida espiritual até à graduação.</p></article></div>
         </div>
+        <form id="primeira-vez-form" class="card feature-card" data-ce-form="cePublicFirstTimers" data-success-key="visitor.form.success">
+          <div class="card-body p-4 p-lg-5">
+            <div class="row g-4 align-items-start">
+              <div class="col-lg-4">
+                <span class="eyebrow" data-i18n="visitor.form.title">Registo de Primeira Vez</span>
+                <p class="text-ce-muted mt-3 mb-0" data-i18n="visitor.form.note">Protótipo frontend: este registo fica preparado para futura ligação ao módulo Primeira Vez da dashboard.</p>
+              </div>
+              <div class="col-lg-8">
+                <div class="row g-3">
+                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.name">Nome completo</label><input class="form-control" name="full_name" type="text" required></div>
+                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.phone">Telefone</label><input class="form-control" name="phone" type="tel" required></div>
+                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.email">E-mail</label><input class="form-control" name="email" type="email"></div>
+                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.church">Igreja</label><select class="form-select" name="church_id"><option value="church-hq">National HQ - Maputo</option><option value="church-matola">Matola</option><option value="church-choupal">Choupal</option><option value="church-khongolote">Khongolote</option><option value="church-malhazine">Malhazine</option><option value="church-hlamankhulo">Hlamankhulo</option><option value="church-maxaquene">Maxaquene</option><option value="church-beira">Beira</option><option value="church-nampula">Nampula</option><option value="church-tete">Tete</option><option value="church-online">Igreja Online</option></select></div>
+                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.invited">Quem convidou?</label><input class="form-control" name="invited_by" type="text"></div>
+                  <div class="col-md-6 d-grid align-content-end gap-2"><label class="form-check"><input class="form-check-input" type="checkbox" name="wants_foundation_school"><span class="form-check-label" data-i18n="visitor.form.foundation">Quero fazer Escola de Fundação</span></label><label class="form-check"><input class="form-check-input" type="checkbox" name="cell_interest"><span class="form-check-label" data-i18n="visitor.form.cell">Tenho interesse numa célula</span></label></div>
+                  <div class="col-12 d-flex flex-column flex-sm-row align-items-sm-center gap-3"><button class="btn btn-ce-gold" type="submit" data-i18n="visitor.form.send">Guardar registo</button><p class="form-message mb-0" data-form-message hidden></p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </section>
 
     <section class="section-padding section-soft">
       <div class="container">
-        <div class="row align-items-end mb-5 g-4">
-          <div class="col-lg-7">
-            <span class="eyebrow" data-i18n="min.eyebrow">Envolva-se</span>
-            <h2 class="display-6 mt-2 mb-3" data-i18n="min.title">Departamentos e Ministérios</h2>
-            <p class="lead text-ce-muted mb-0" data-i18n="min.lead">Cada departamento existe para cuidar, formar e enviar. Conheça onde pode servir ou ser servido.</p>
-          </div>
-          <div class="col-lg-5 text-lg-end">
-            <a class="btn btn-ce-dark" href="ministerios.html" data-i18n="min.cta">Saber Mais</a>
+        <div class="row mb-5">
+          <div class="col-lg-8">
+            <span class="eyebrow" data-i18n="min.eyebrow">Cresça e sirva</span>
+            <h2 class="display-5 mt-2 mb-3" data-i18n="min.title">Ministérios para cada etapa da vida</h2>
+            <p class="lead text-ce-muted" data-i18n="min.lead">Cada ministério existe para cuidar, formar, fortalecer e enviar pessoas cheias da Palavra de Deus.</p>
           </div>
         </div>
         <div class="row g-4">
-          <div class="col-md-6 col-xl-3">
-            <article class="card feature-card h-100"><div class="card-body p-4"><span class="icon-mark">A</span><h3 class="h5 mt-4" data-i18n="min.c1.title">Aconselhamento</h3><p class="text-ce-muted mb-0" data-i18n="min.c1.text">Acompanhamento pessoal e registo de novos membros e visitantes, com seguimento contínuo.</p></div></article>
-          </div>
-          <div class="col-md-6 col-xl-3">
-            <article class="card feature-card h-100"><div class="card-body p-4"><span class="icon-mark">EF</span><h3 class="h5 mt-4" data-i18n="min.c2.title">Escola de Fundação</h3><p class="text-ce-muted mb-0" data-i18n="min.c2.text">O primeiro passo de crescimento espiritual para todo novo membro, até à graduação.</p></div></article>
-          </div>
-          <div class="col-md-6 col-xl-3">
-            <article class="card feature-card h-100"><div class="card-body p-4"><img class="ministry-logo" src="assets/web/HS-LOGO-150x150.png" alt="Healing School"><h3 class="h5 mt-4" data-i18n="min.c3.title">Escola de Cura</h3><p class="text-ce-muted mb-0" data-i18n="min.c3.text">Ministério dedicado à cura divina, ensino e testemunhos de restauração.</p></div></article>
-          </div>
-          <div class="col-md-6 col-xl-3">
-            <article class="card feature-card h-100"><div class="card-body p-4"><img class="ministry-logo" src="assets/web/LWSAT-LGO-150x150.png" alt="LoveWorld SAT"><h3 class="h5 mt-4" data-i18n="min.c5.title">LoveWorld SAT</h3><p class="text-ce-muted mb-0" data-i18n="min.c5.text">A nossa plataforma de mídia e transmissão, levando conteúdo de fé a todo o país.</p></div></article>
-          </div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><span class="icon-mark"><i class="bi bi-chat-heart"></i></span><h3 class="h5 mt-4" data-i18n="min.c1.title">Aconselhamento</h3><p class="text-ce-muted" data-i18n="min.c1.text">Cuidado pastoral, acompanhamento de visitantes e apoio espiritual com amor e discrição.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><span class="icon-mark gold-icon"><i class="bi bi-mortarboard"></i></span><h3 class="h5 mt-4" data-i18n="min.c2.title">Escola de Fundação</h3><p class="text-ce-muted" data-i18n="min.c2.text">Sete aulas essenciais para consolidar novos membros na fé e preparar a caminhada cristã.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><span class="icon-mark"><i class="bi bi-people"></i></span><h3 class="h5 mt-4" data-i18n="min.c3.title">Ministério de Células</h3><p class="text-ce-muted" data-i18n="min.c3.text">Pequenos grupos de comunhão, discipulado, evangelismo e crescimento espiritual nos bairros.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><img class="ministry-logo" src="assets/web/HS-LOGO-150x150.png" alt="Healing School"><h3 class="h5 mt-4" data-i18n="min.c4.title">Escola de Cura</h3><p class="text-ce-muted" data-i18n="min.c4.text">Ensino, testemunhos e fé prática para receber e ministrar a cura divina.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><img class="ministry-logo" src="assets/web/LWSAT-LGO-150x150.png" alt="LoveWorld SAT"><h3 class="h5 mt-4" data-i18n="min.c5.title">LoveWorld SAT</h3><p class="text-ce-muted" data-i18n="min.c5.text">Transmissões, mídia e conteúdo de fé para Moçambique e para a comunidade lusófona.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><span class="icon-mark gold-icon"><i class="bi bi-gift"></i></span><h3 class="h5 mt-4" data-i18n="min.c6.title">Parceria</h3><p class="text-ce-muted" data-i18n="min.c6.text">Semeie em projectos do evangelho, alcance nacional e iniciativas LoveWorld.</p><a class="btn btn-ce-dark btn-sm" href="ofertas.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><span class="icon-mark"><i class="bi bi-calendar-event"></i></span><h3 class="h5 mt-4" data-i18n="min.c7.title">Programas</h3><p class="text-ce-muted" data-i18n="min.c7.text">Cultos especiais, conferências, reuniões de oração e eventos para toda a família.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
+          <div class="col-md-6 col-xl-3"><article class="feature-card h-100 p-4"><span class="icon-mark"><i class="bi bi-droplet"></i></span><h3 class="h5 mt-4" data-i18n="min.c8.title">Sacramentos</h3><p class="text-ce-muted" data-i18n="min.c8.text">Baptismo, casamento e dedicação de bebés com orientação pastoral e acompanhamento.</p><a class="btn btn-ce-dark btn-sm" href="ministerios.html" data-i18n="min.cta">Saber Mais</a></article></div>
         </div>
       </div>
     </section>
 
-    <section class="cta-band section-padding text-center">
+    <section class="section-padding section-dark" data-church-grid>
       <div class="container">
-        <span class="eyebrow text-ce-gold" data-i18n="cta.eyebrow">Não pode vir? Fique connosco online</span>
-        <h2 class="display-6 mt-2 mb-3" data-i18n="cta.title">Assista ao culto onde estiver</h2>
-        <p class="lead mx-auto mb-4 opacity-75" style="max-width: 680px;" data-i18n="cta.text">Transmitimos ao vivo todos os domingos e quartas-feiras. Faça parte da família Christ Embassy Moçambique, esteja onde estiver.</p>
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-          <a class="btn btn-ce-gold btn-lg" href="culto.html" data-i18n="cta.watch">Assistir Agora</a>
-          <a class="btn btn-ce-outline btn-lg" href="ofertas.html" data-i18n="cta.give">Fazer uma Oferta</a>
+        <div class="row align-items-end mb-4 g-4">
+          <div class="col-lg-7">
+            <span class="eyebrow" data-i18n="church.eyebrow">Igrejas e localidades</span>
+            <h2 class="display-5 mt-2 mb-3" data-i18n="church.title">Encontre uma Christ Embassy perto de si</h2>
+            <p class="lead opacity-75 mb-0" data-i18n="church.lead">Estamos a crescer em Moçambique através de igrejas, células, pontos de comunhão e igreja online.</p>
+          </div>
+          <div class="col-lg-5">
+            <div class="filter-bar row g-2">
+              <div class="col-md-4"><select class="form-select" data-filter-province><option value="" data-i18n="church.all">Todas</option><option value="Maputo">Maputo</option><option value="Sofala">Sofala</option><option value="Nampula">Nampula</option><option value="Tete">Tete</option><option value="Online">Online</option></select></div>
+              <div class="col-md-4"><select class="form-select" data-filter-city><option value="" data-i18n="church.all">Todas</option><option value="Maputo">Maputo</option><option value="Matola">Matola</option><option value="Beira">Beira</option><option value="Nampula">Nampula</option><option value="Tete">Tete</option><option value="Online">Online</option></select></div>
+              <div class="col-md-4"><select class="form-select" data-filter-type><option value="" data-i18n="church.all">Todas</option><option value="presencial" data-i18n="church.inperson">Presencial</option><option value="online" data-i18n="church.online">Online</option></select></div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">HQ</span><h3 class="h5 mt-3">National HQ - Maputo</h3><p class="text-ce-muted mb-3">Av. de Angola, Nº 1818/1824, Maputo</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: Pastor Kene Ume</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Matola" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Matola</h3><p class="text-ce-muted mb-3">Maputo Província</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Choupal</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Matola" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Khongolote</h3><p class="text-ce-muted mb-3">Maputo Província</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Malhazine</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Hlamankhulo</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Maxaquene</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Sofala" data-city="Beira" data-type="presencial"><span class="location-badge">Sofala</span><h3 class="h5 mt-3">Beira</h3><p class="text-ce-muted mb-3">Sofala</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Nampula" data-city="Nampula" data-type="presencial"><span class="location-badge">Nampula</span><h3 class="h5 mt-3">Nampula</h3><p class="text-ce-muted mb-3">Nampula</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Tete" data-city="Tete" data-type="presencial"><span class="location-badge">Tete</span><h3 class="h5 mt-3">Tete</h3><p class="text-ce-muted mb-3">Tete</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Online" data-city="Online" data-type="online"><span class="location-badge">Online</span><h3 class="h5 mt-3">Igreja Online</h3><p class="text-ce-muted mb-3">Para Moçambique e diáspora</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: Equipa Online</p><a href="culto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container">
+        <div class="online-panel p-4 p-lg-5 text-white">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+              <span class="eyebrow" data-i18n="online.eyebrow">Igreja Online</span>
+              <h2 class="display-5 mt-2 mb-3" data-i18n="online.title">Não pode vir presencialmente? Junte-se online.</h2>
+              <p class="lead opacity-75" data-i18n="online.lead">Acompanhe os cultos ao vivo, partilhe pedidos de oração e faça parte da nossa comunidade, mesmo à distância.</p>
+              <div class="d-flex flex-column flex-sm-row gap-3"><a class="btn btn-ce-gold" href="culto.html" data-i18n="online.watch">Assistir Agora</a><a class="btn btn-ce-outline" href="#primeira-vez-form" data-i18n="online.join">Quero fazer parte da Igreja Online</a></div>
+            </div>
+            <div class="col-lg-6">
+              <div class="live-placeholder d-flex align-items-center justify-content-center text-center p-4">
+                <div><i class="bi bi-play-circle display-3 text-ce-gold"></i><h3 class="h5 mt-3 mb-0" data-i18n="online.placeholder">Área de transmissão YouTube / Facebook Live</h3></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -172,24 +203,20 @@
   <footer class="site-footer section-padding pb-4">
     <div class="container">
       <div class="row g-4 pb-4">
-        <div class="col-lg-4"><h2 class="h5" data-i18n="foot.about">Christ Embassy Moçambique</h2><p class="mb-0" data-i18n="foot.aboutText">Parte da família mundial Christ Embassy, servindo Moçambique e a comunidade lusófona (PALOP) com a mesma visão, missão e propósito.</p></div>
-        <div class="col-6 col-lg-2"><h3 class="h6" data-i18n="foot.links">Ligações</h3><ul class="list-unstyled small d-grid gap-2"><li><a href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li><li><a href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li><li><a href="culto.html" data-i18n="nav.online">Culto Online</a></li><li><a href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal">Portal</a></li></ul></div>
-        <div class="col-6 col-lg-3"><h3 class="h6" data-i18n="foot.contact">Contacto</h3><ul class="list-unstyled small d-grid gap-2"><li class="icon-line"><i class="bi bi-geo-alt-fill"></i><span data-i18n="foot.addr">Av. de Angola, Nº 1818/1824, Maputo</span></li><li class="icon-line"><i class="bi bi-telephone-fill"></i><span>+258 86 227 0000</span></li><li class="icon-line"><i class="bi bi-envelope-fill"></i><span data-i18n="foot.email.note">E-mail a confirmar</span></li></ul></div>
-        <div class="col-lg-3"><h3 class="h6" data-i18n="foot.follow">Siga-nos</h3><ul class="list-unstyled small d-grid gap-2"><li><a class="icon-line" href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener"><i class="bi bi-facebook"></i><span>Facebook</span></a></li><li><a class="icon-line" href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i><span data-i18n="foot.ig">Instagram</span></a></li><li><a class="icon-line" href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener"><i class="bi bi-youtube"></i><span data-i18n="foot.yt">YouTube</span></a></li></ul></div>
+        <div class="col-lg-4"><h2 class="h5" data-i18n="foot.about">Christ Embassy Moçambique</h2><p class="mb-0" data-i18n="foot.aboutText">Uma igreja, uma família e uma visão para levar a presença de Deus às nações e demonstrar o caráter do Espírito.</p></div>
+        <div class="col-6 col-lg-2"><h3 class="h6" data-i18n="foot.links">Ligações</h3><ul class="list-unstyled small d-grid gap-2"><li><a href="index.html" data-i18n="nav.home">Início</a></li><li><a href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li><li><a href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li><li><a href="igrejas.html" data-i18n="nav.churches">Igrejas</a></li><li><a href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal">Portal</a></li></ul></div>
+        <div class="col-6 col-lg-3"><h3 class="h6" data-i18n="foot.contact">Contacto</h3><ul class="list-unstyled small d-grid gap-2"><li class="icon-line"><i class="bi bi-geo-alt-fill"></i><span data-i18n="foot.addr">Av. de Angola, Nº 1818/1824, Maputo</span></li><li class="icon-line"><i class="bi bi-telephone-fill"></i><span>+258 86 227 0000</span></li><li class="icon-line"><i class="bi bi-envelope-fill"></i><span data-i18n="foot.email.note">A confirmar</span></li></ul></div>
+        <div class="col-lg-3"><h3 class="h6" data-i18n="foot.follow">Siga-nos</h3><ul class="list-unstyled small d-grid gap-2"><li><a class="icon-line" href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener"><i class="bi bi-facebook"></i><span data-i18n="foot.fb">Facebook</span></a></li><li><a class="icon-line" href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i><span data-i18n="foot.ig">Instagram</span></a></li><li><a class="icon-line" href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener"><i class="bi bi-youtube"></i><span data-i18n="foot.yt">YouTube</span></a></li></ul></div>
       </div>
       <div class="border-top border-warning border-opacity-25 pt-4 d-flex flex-column flex-md-row justify-content-between gap-2 small">
         <span>&copy; 2026 Christ Embassy Moçambique. <span data-i18n="foot.rights">Todos os direitos reservados.</span></span>
-        <a href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal2">Acesso ao Portal →</a>
+        <a href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal2">Acesso ao Portal</a>
       </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/i18n.js"></script>
+  <script src="js/i18n.js?v=20260708-dark-cards"></script>
+  <script src="js/site.js?v=20260708-dark-cards"></script>
 </body>
 </html>
-
-
-
-
-

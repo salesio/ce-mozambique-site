@@ -10,3 +10,7 @@ assets/*.png
 # Local/editor files
 .DS_Store
 Thumbs.db
+
+# Local deploy credentials (never commit)
+.ftp-credentials
+.ftp-credentials.json
