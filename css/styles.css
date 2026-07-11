@@ -415,6 +415,23 @@ button,
   border-bottom: 0;
 }
 
+.location-schedule {
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.location-service-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  color: var(--ce-muted);
+}
+
+.location-service-line strong {
+  color: var(--ce-ink);
+}
+
 .feature-card,
 .journey-card,
 .location-card,
