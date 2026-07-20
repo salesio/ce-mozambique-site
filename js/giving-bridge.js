@@ -1,6 +1,6 @@
 /**
  * Public giving form → dashboard finance bridge (frontend-first).
- * Queue key is shared with ce-mozambique-dashboard/js/public-giving-bridge.js
+ * Queue key is shared with ce-operations-portal/js/public-giving-bridge.js
  */
 const PUBLIC_GIVING_QUEUE_KEY = "ce-public-giving-queue";
 const DASHBOARD_STORAGE_KEY = "ce-ops-dashboard-v3";
