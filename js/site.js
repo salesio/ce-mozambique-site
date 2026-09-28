@@ -55,7 +55,7 @@ function initNavActive() {
   document.querySelectorAll(".navbar .nav-link:not(.dropdown-toggle)").forEach((link) => {
     const href = link.getAttribute("href");
     if (!href || href.startsWith("http") || href === "#") return;
-    if (href === page) {
+    if (href === page || (page === "relatorio-dizimo-parceria.html" && href === "ofertas.html")) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     }
@@ -72,7 +72,7 @@ function initNavActive() {
 
 function initReveal() {
   const targets = document.querySelectorAll(
-    ".feature-card, .journey-card, .location-card, .method-card, .hero-card, .online-panel"
+    ".feature-card, .journey-card, .location-card, .method-card, .hero-card, .online-panel, .giving-page-card, .giving-share-card"
   );
   if (!targets.length) return;
 

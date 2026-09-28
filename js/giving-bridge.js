@@ -14,19 +14,26 @@ const PUBLIC_GIVING_CATEGORIES = [
   "Escola de Cura",
   "Mandato de Célula",
   "Rapsódias das Crianças",
-  "Projectos Locais",
+  "Projecto da Igreja",
+  "Alcançar Moçambique",
+  "Primícias",
+  "Semente de Fé",
   "Outros"
 ];
 
 const PUBLIC_PAYMENT_METHODS = ["M-Pesa", "E-Mola", "Banco", "Dinheiro", "Outro"];
 
 const DEFAULT_PUBLIC_CHURCHES = [
-  { id: "church-hq", name: "National HQ - Christ Embassy Mozambique", public_name: "Igreja Embaixada de Cristo Maputo" },
+  { id: "church-hq", name: "National HQ - Christ Embassy Mozambique", public_name: "Igreja Embaixada de Cristo Maputo (HQ)" },
   { id: "church-matola", name: "Igreja Embaixada de Cristo Matola", public_name: "Embaixada de Cristo Matola" },
   { id: "church-khongolote", name: "Igreja Embaixada de Cristo Khongolote", public_name: "Embaixada de Cristo Khongolote" },
   { id: "church-choupal", name: "Igreja Embaixada de Cristo Choupal", public_name: "Embaixada de Cristo Choupal" },
+  { id: "church-malhazine", name: "Igreja Embaixada de Cristo Malhazine", public_name: "Embaixada de Cristo Malhazine" },
+  { id: "church-hlamankhulo", name: "Igreja Embaixada de Cristo Hlamankhulo", public_name: "Embaixada de Cristo Hlamankhulo" },
+  { id: "church-maxaquene", name: "Igreja Embaixada de Cristo Maxaquene", public_name: "Embaixada de Cristo Maxaquene" },
   { id: "church-beira", name: "Igreja Embaixada de Cristo Beira", public_name: "Igreja Embaixada de Cristo Beira" },
-  { id: "church-nampula", name: "Igreja Embaixada de Cristo Nampula", public_name: "Embaixada De Cristo Nampula" },
+  { id: "church-nampula", name: "Igreja Embaixada de Cristo Nampula", public_name: "Embaixada de Cristo Nampula" },
+  { id: "church-tete", name: "Igreja Embaixada de Cristo Tete", public_name: "Embaixada de Cristo Tete" },
   { id: "church-virtual", name: "CE Mozambique Online Church", public_name: "Igreja Embaixada de Cristo Online" }
 ];
 
