@@ -114,42 +114,53 @@
 }
 
 .giving-modal .form-label,
-.giving-page-card .form-label {
-  color: rgba(244, 248, 255, 0.88);
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
+.giving-page-card .form-label,
+.giving-page-wrapper .form-label,
+#givingPageForm .form-label {
+  color: #f8fafc !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.35rem !important;
+  letter-spacing: 0.01em;
 }
 
 .giving-modal .form-control,
 .giving-modal .form-select,
 .giving-page-card .form-control,
-.giving-page-card .form-select {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #fff;
-  border-radius: 0.7rem;
-  min-height: 2.65rem;
+.giving-page-card .form-select,
+#givingPageForm .form-control,
+#givingPageForm .form-select {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 0.75rem !important;
+  min-height: 2.75rem !important;
+  font-size: 0.95rem !important;
 }
 
 .giving-modal .form-control:focus,
 .giving-modal .form-select:focus,
 .giving-page-card .form-control:focus,
-.giving-page-card .form-select:focus {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(34, 211, 238, 0.55);
-  box-shadow: 0 0 0 0.2rem rgba(34, 211, 238, 0.16);
-  color: #fff;
+.giving-page-card .form-select:focus,
+#givingPageForm .form-control:focus,
+#givingPageForm .form-select:focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(34, 211, 238, 0.7) !important;
+  box-shadow: 0 0 0 0.2rem rgba(34, 211, 238, 0.2) !important;
+  color: #ffffff !important;
 }
 
 .giving-modal .form-control::placeholder,
-.giving-page-card .form-control::placeholder {
-  color: rgba(244, 248, 255, 0.42);
+.giving-page-card .form-control::placeholder,
+#givingPageForm .form-control::placeholder {
+  color: rgba(244, 248, 255, 0.5) !important;
 }
 
 .giving-modal .form-select option,
-.giving-page-card .form-select option {
-  color: #071326;
+.giving-page-card .form-select option,
+#givingPageForm .form-select option {
+  background-color: #071326 !important;
+  color: #ffffff !important;
 }
 
 .giving-category-grid {
@@ -162,21 +173,23 @@
   grid-template-columns: minmax(0, 1fr) 9.5rem;
   gap: 0.65rem;
   align-items: center;
-  padding: 0.55rem 0.7rem;
+  padding: 0.65rem 0.85rem;
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .giving-category-row label {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  color: rgba(244, 248, 255, 0.92);
+  color: #ffffff !important;
 }
 
 .giving-category-row input {
   text-align: right;
+  font-weight: 700;
+  color: #ffffff !important;
 }
 
 .giving-total-bar {
