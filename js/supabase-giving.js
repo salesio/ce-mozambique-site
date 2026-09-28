@@ -151,9 +151,76 @@
     return { ok: true, submission: submissionRow, financeCount: financeRows.length };
   }
 
+  function normalizeMemberResult(m) {
+    const fullName = m.nome_completo || `${m.nome || m.first_name || ""} ${m.apelido || m.last_name || ""}`.trim();
+    return {
+      id: m.id || "",
+      nome_completo: fullName,
+      nome: m.nome || m.first_name || "",
+      apelido: m.apelido || m.last_name || "",
+      telefone: m.telefone || m.phone || m.whatsapp || "",
+      email: m.email || "",
+      data_de_aniversario: m.data_de_aniversario || m.birthday || "",
+      church_id: m.church_id || m.igreja_id || "",
+      grupo_de_celula: m.grupo_de_celula || m.cell_group_name || m.cell_group || "",
+      cell_group_id: m.cell_group_id || "",
+      celula: m.celula || m.cell_name || m.cell || "",
+      cell_id: m.cell_id || ""
+    };
+  }
+
+  async function searchPublicMembers(query) {
+    const q = String(query || "").trim();
+    if (q.length < 3) return [];
+
+    const supabase = getClient();
+    if (supabase) {
+      try {
+        const cleanDigits = q.replace(/\D/g, "");
+        let builder = supabase.from("members").select("*");
+        if (cleanDigits.length >= 4) {
+          builder = builder.or(`telefone.ilike.%${cleanDigits}%,nome.ilike.%${q}%,apelido.ilike.%${q}%`);
+        } else {
+          builder = builder.or(`nome.ilike.%${q}%,apelido.ilike.%${q}%`);
+        }
+        const { data, error } = await builder.limit(6);
+        if (!error && Array.isArray(data) && data.length) {
+          return data.map(normalizeMemberResult);
+        }
+      } catch (err) {
+        console.warn("[CE Giving] Supabase member search fallback:", err);
+      }
+    }
+
+    // LocalStorage fallback from portal cache if available
+    try {
+      const keys = ["ce-ops-dashboard-v3", "ce-data-layer:members"];
+      for (const key of keys) {
+        const raw = localStorage.getItem(key);
+        if (!raw) continue;
+        const parsed = JSON.parse(raw);
+        const list = Array.isArray(parsed) ? parsed : (parsed.members || []);
+        if (Array.isArray(list) && list.length) {
+          const qLower = q.toLowerCase();
+          const cleanDigits = q.replace(/\D/g, "");
+          const matches = list.filter((m) => {
+            const full = `${m.nome || m.first_name || ""} ${m.apelido || m.last_name || ""}`.toLowerCase();
+            const phone = String(m.telefone || m.phone || m.whatsapp || "");
+            return full.includes(qLower) || (cleanDigits.length >= 4 && phone.includes(cleanDigits));
+          }).slice(0, 6);
+          if (matches.length) return matches.map(normalizeMemberResult);
+        }
+      }
+    } catch (_) {}
+
+    return [];
+  }
+
   window.CESupabaseGiving = {
     isConfigured: () => config().isConfigured,
-    submitPublicGivingViaSupabase
+    submitPublicGivingViaSupabase,
+    searchPublicMembers
   };
   window.submitPublicGivingViaSupabase = submitPublicGivingViaSupabase;
+  window.searchPublicMembers = searchPublicMembers;
 })();

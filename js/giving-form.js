@@ -3,6 +3,7 @@
  */
 const GIVING_MAX_FILE_BYTES = 5 * 1024 * 1024;
 const GIVING_ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "application/pdf"];
+const GIVING_SAVED_PROFILE_KEY = "ce-giving-saved-profile";
 
 const GIVING_CATEGORY_I18N = {
   "Dízimo": "giving.cat.tithe",
@@ -65,13 +66,18 @@ function buildGivingFormInnerHtml(prefix = "giving") {
 
   return `
     <div id="${prefix}FormAlert" class="giving-form-alert" hidden></div>
+    <div id="${prefix}SavedProfileSlot"></div>
 
     <section class="giving-section">
       <h3 class="giving-section-title"><i class="bi bi-person-vcard"></i><span data-i18n="giving.section.personal">Dados Pessoais</span></h3>
       <div class="row g-3">
         <div class="col-md-6">
           <label class="form-label" for="${prefix}_nome" data-i18n="giving.field.fullName">Nome completo</label>
-          <input class="form-control" id="${prefix}_nome" name="nome_completo" type="text" required autocomplete="name" placeholder="Ex: João Manuel Silva">
+          <div class="giving-autocomplete-wrap">
+            <input class="form-control" id="${prefix}_nome" name="nome_completo" type="text" required autocomplete="off" placeholder="Comece a digitar o seu nome...">
+            <div id="${prefix}AutocompleteDropdown" class="giving-autocomplete-dropdown d-none"></div>
+            <div id="${prefix}AutofillNotice" class="d-none"></div>
+          </div>
         </div>
         <div class="col-md-6">
           <label class="form-label" for="${prefix}_birthday" data-i18n="giving.field.birthday">Data de aniversário</label>
@@ -255,6 +261,185 @@ function refreshCells(prefix = "giving") {
   ).join("")}`;
   cellSelect.disabled = !groupId;
   empty?.classList.toggle("d-none", !groupId || cells.length > 0);
+}
+
+/**
+ * Autocomplete / Member Lookup Controller
+ */
+function setupMemberAutocomplete(prefix) {
+  const nameInput = document.getElementById(`${prefix}_nome`);
+  const dropdown = document.getElementById(`${prefix}AutocompleteDropdown`);
+  const notice = document.getElementById(`${prefix}AutofillNotice`);
+  if (!nameInput || !dropdown) return;
+
+  let debounceTimer = null;
+
+  const closeDropdown = () => {
+    dropdown.classList.add("d-none");
+    dropdown.innerHTML = "";
+  };
+
+  const applyMemberToForm = (member) => {
+    nameInput.value = member.nome_completo || `${member.nome || ""} ${member.apelido || ""}`.trim();
+    
+    const phoneInput = document.getElementById(`${prefix}_phone`);
+    if (phoneInput && member.telefone) phoneInput.value = member.telefone;
+
+    const bdayInput = document.getElementById(`${prefix}_birthday`);
+    if (bdayInput && member.data_de_aniversario) bdayInput.value = member.data_de_aniversario;
+
+    const emailInput = document.getElementById(`${prefix}_email`);
+    if (emailInput && member.email) emailInput.value = member.email;
+
+    // Church matching
+    const churchSelect = document.getElementById(`${prefix}_church`);
+    if (churchSelect && (member.church_id || member.igreja_id)) {
+      const targetId = member.church_id || member.igreja_id;
+      const opt = Array.from(churchSelect.options).find((o) => o.value === targetId || o.text.toLowerCase().includes(targetId.toLowerCase()));
+      if (opt) {
+        churchSelect.value = opt.value;
+        refreshCellGroups(prefix);
+      }
+    }
+
+    // Cell Group matching
+    const groupSelect = document.getElementById(`${prefix}_cell_group`);
+    if (groupSelect && (member.cell_group_id || member.grupo_de_celula)) {
+      const targetGroup = (member.cell_group_id || member.grupo_de_celula).toLowerCase();
+      const groupOpt = Array.from(groupSelect.options).find(
+        (o) => o.value === targetGroup || o.text.toLowerCase().includes(targetGroup)
+      );
+      if (groupOpt) {
+        groupSelect.value = groupOpt.value;
+        refreshCells(prefix);
+      }
+    }
+
+    // Cell matching
+    const cellSelect = document.getElementById(`${prefix}_cell`);
+    if (cellSelect && (member.cell_id || member.celula)) {
+      const targetCell = (member.cell_id || member.celula).toLowerCase();
+      const cellOpt = Array.from(cellSelect.options).find(
+        (o) => o.value === targetCell || o.text.toLowerCase().includes(targetCell)
+      );
+      if (cellOpt) cellSelect.value = cellOpt.value;
+    }
+
+    closeDropdown();
+
+    if (notice) {
+      notice.innerHTML = `<span class="giving-autofill-notice"><i class="bi bi-check2-circle"></i> Membro identificado — dados preenchidos automaticamente</span>`;
+      notice.classList.remove("d-none");
+    }
+  };
+
+  nameInput.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+    if (notice) notice.classList.add("d-none");
+    const query = nameInput.value.trim();
+
+    if (query.length < 3) {
+      closeDropdown();
+      return;
+    }
+
+    debounceTimer = setTimeout(async () => {
+      dropdown.classList.remove("d-none");
+      dropdown.innerHTML = `<div class="giving-autocomplete-loading"><span class="spinner-border spinner-border-sm me-2"></span>A procurar membros...</div>`;
+
+      try {
+        let results = [];
+        if (typeof window.searchPublicMembers === "function") {
+          results = await window.searchPublicMembers(query);
+        }
+
+        if (!results || !results.length) {
+          dropdown.innerHTML = `<div class="giving-autocomplete-empty">Nenhum membro encontrado com este nome (pode preencher manualmente)</div>`;
+          return;
+        }
+
+        const itemsHtml = results.map((m, idx) => {
+          const subInfo = [m.grupo_de_celula, m.celula].filter(Boolean).join(" • ") || "Membro registado";
+          return `
+            <button type="button" class="giving-autocomplete-item" data-member-index="${idx}">
+              <div class="giving-autocomplete-avatar"><i class="bi bi-person-fill"></i></div>
+              <div class="giving-autocomplete-text">
+                <div class="giving-autocomplete-name">${m.nome_completo}</div>
+                <div class="giving-autocomplete-sub">${subInfo}</div>
+              </div>
+            </button>`;
+        }).join("");
+
+        dropdown.innerHTML = itemsHtml;
+
+        dropdown.querySelectorAll(".giving-autocomplete-item").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const idx = Number(btn.dataset.memberIndex);
+            const selected = results[idx];
+            if (selected) applyMemberToForm(selected);
+          });
+        });
+      } catch (err) {
+        dropdown.innerHTML = `<div class="giving-autocomplete-empty">Não foi possível buscar membros no momento</div>`;
+      }
+    }, 280);
+  });
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (!nameInput.contains(e.target) && !dropdown.contains(e.target)) {
+      closeDropdown();
+    }
+  });
+
+  // Setup saved local device profile if available
+  setupSavedDeviceProfile(prefix, applyMemberToForm);
+}
+
+function setupSavedDeviceProfile(prefix, applyFn) {
+  const slot = document.getElementById(`${prefix}SavedProfileSlot`);
+  if (!slot) return;
+  try {
+    const raw = localStorage.getItem(GIVING_SAVED_PROFILE_KEY);
+    if (!raw) return;
+    const profile = JSON.parse(raw);
+    if (profile?.nome_completo) {
+      slot.innerHTML = `
+        <div class="giving-saved-profile-bar">
+          <div class="giving-saved-profile-text">
+            <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Preencher com dados de <strong>${profile.nome_completo}</strong>?
+          </div>
+          <button type="button" class="giving-saved-profile-btn" id="${prefix}BtnApplySavedProfile">
+            Preencher
+          </button>
+        </div>`;
+      
+      document.getElementById(`${prefix}BtnApplySavedProfile`)?.addEventListener("click", () => {
+        applyFn(profile);
+        slot.innerHTML = "";
+      });
+    }
+  } catch (_) {}
+}
+
+function saveDonorProfileLocally(submission) {
+  try {
+    if (submission?.nome_completo && submission?.telefone) {
+      localStorage.setItem(GIVING_SAVED_PROFILE_KEY, JSON.stringify({
+        nome_completo: submission.nome_completo,
+        telefone: submission.telefone,
+        data_de_aniversario: submission.data_de_aniversario || "",
+        email: submission.email || "",
+        church_id: submission.igreja_id || "",
+        igreja_id: submission.igreja_id || "",
+        grupo_de_celula: submission.grupo_de_celula || submission.cell_group_name || "",
+        cell_group_id: submission.cell_group_id || "",
+        celula: submission.celula || submission.cell_name || "",
+        cell_id: submission.cell_id || ""
+      }));
+    }
+  } catch (_) {}
 }
 
 function validateGivingForm(form) {
@@ -455,6 +640,7 @@ function initStandaloneGivingPage(container) {
   refreshChurchSelect(prefix);
   refreshCellGroups(prefix);
   updateFormTotals(form, prefix);
+  setupMemberAutocomplete(prefix);
 
   form?.addEventListener("input", (event) => {
     if (event.target.matches("[data-giving-category]")) updateFormTotals(form, prefix);
@@ -498,6 +684,7 @@ function initStandaloneGivingPage(container) {
 
       if (!saved) throw new Error("No submission handler available");
 
+      saveDonorProfileLocally(submission);
       renderReceiptCard(container, submission);
     } catch {
       showFormAlert(form, givingT("giving.error.generic", lang), "error", prefix);
@@ -507,47 +694,6 @@ function initStandaloneGivingPage(container) {
       }
     }
   });
-}
-
-function initGivingShareCard() {
-  const btnCopy = document.getElementById("btnCopyGivingLink");
-  const btnWa = document.getElementById("btnShareGivingWhatsApp");
-  const toastMsg = document.getElementById("givingShareToast");
-
-  const currentUrl = window.location.href.split("#")[0].split("?")[0];
-
-  if (btnCopy) {
-    btnCopy.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(currentUrl);
-        if (toastMsg) {
-          toastMsg.classList.remove("d-none");
-          setTimeout(() => toastMsg.classList.add("d-none"), 3500);
-        }
-      } catch {
-        const temp = document.createElement("input");
-        temp.value = currentUrl;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-        if (toastMsg) {
-          toastMsg.classList.remove("d-none");
-          setTimeout(() => toastMsg.classList.add("d-none"), 3500);
-        }
-      }
-    });
-  }
-
-  if (btnWa) {
-    const shareText = encodeURIComponent(
-      `Paz do Senhor irmãos!\n` +
-      `Aqui está o link para preencher o *Relatório de Dízimo e Parceria* da Christ Embassy Moçambique:\n` +
-      `${currentUrl}\n` +
-      `Deus abençoe a sua semente!`
-    );
-    btnWa.setAttribute("href", `https://api.whatsapp.com/send?text=${shareText}`);
-  }
 }
 
 function openGivingModal() {
@@ -591,7 +737,6 @@ function initGivingModal() {
   const standaloneContainer = document.getElementById("givingStandaloneContainer");
   if (standaloneContainer) {
     initStandaloneGivingPage(standaloneContainer);
-    initGivingShareCard();
   }
 
   // Modal initialization for pages with trigger buttons
@@ -603,6 +748,7 @@ function initGivingModal() {
   const backdrop = document.getElementById("givingModalBackdrop");
   refreshChurchSelect("giving");
   refreshCellGroups("giving");
+  setupMemberAutocomplete("giving");
 
   document.querySelectorAll("[data-open-giving-modal]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
@@ -663,6 +809,7 @@ function initGivingModal() {
 
       if (!saved) throw new Error("No submission handler available");
 
+      saveDonorProfileLocally(submission);
       showFormAlert(form, givingT("giving.success", lang), "success", "giving");
       form.reset();
       refreshCellGroups("giving");
